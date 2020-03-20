@@ -8,6 +8,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Disc {
+	//Fields
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +31,7 @@ public class Disc {
 	@Column(name = "rim_thickness_CM")
 	private double rimThicknessCM;
 	
+	//Methods Begin
 	public Disc() {}
 
 	public int getId() {
