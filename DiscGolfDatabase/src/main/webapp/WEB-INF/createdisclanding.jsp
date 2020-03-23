@@ -12,6 +12,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
+<a href="home.do">Home</a>
 	<div class="fluid container">
 		<form:form action="createDisc" method="POST" modelAttribute="disc">
 		<table class="table table-striped">

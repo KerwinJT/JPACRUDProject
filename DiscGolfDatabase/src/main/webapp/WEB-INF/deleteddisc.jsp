@@ -8,6 +8,7 @@
 <title>Deleted Disc Response</title>
 </head>
 <body>
+	<a href="home.do">Home</a>
 	<h2>
 
 		<c:choose>

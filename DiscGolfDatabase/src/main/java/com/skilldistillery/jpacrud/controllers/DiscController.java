@@ -78,4 +78,23 @@ public class DiscController {
 		return mv;
 	}
 	
+	@RequestMapping(path="updatedisc.do", method=RequestMethod.POST, params="discId")
+	public String updateDiscById(@RequestParam int discId, Model model) {
+		model.addAttribute("disc", dao.findById(discId));
+		
+		
+		return "updatedisc";
+	}
+	
+	@RequestMapping(path="/updatedInformation", method=RequestMethod.POST)
+	public ModelAndView updatedDiscInfo(@ModelAttribute("disc") Disc disc, RedirectAttributes redir) {
+		ModelAndView mv = new ModelAndView();
+		disc = dao.updateDisc(disc);
+		int discId = disc.getId();
+		mv.setViewName("redirect:singleId.do?discId="+discId);
+		return mv;
+	}
+	
+	
+	
 }

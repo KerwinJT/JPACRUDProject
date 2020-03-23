@@ -18,6 +18,10 @@
 			<input type="submit" 
 				value="Delete: ${disc.discModel}"/>
 		</form>
+		<form action="updatedisc.do?discId=${disc.id}" method="POST">
+			<input type="submit" 
+				value="Update: ${disc.discModel}"/>
+		</form>
 	</div>
 	<div class="fluid containter">
 		<table class="table table-striped">

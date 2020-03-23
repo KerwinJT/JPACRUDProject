@@ -73,10 +73,26 @@ public class DiscDAOImpl implements DiscDAO {
 
 	@Override
 	public Disc updateDisc(Disc disc) {
-		Disc updatedDisc = null;
+		Disc managedDisc = em.find(Disc.class, disc.getId());;
+		System.out.println(disc);
 		if (em.contains(disc)) {
 			try {
-				updatedDisc = em.find(Disc.class, disc.getId());
+				managedDisc.setManufacturer(disc.getManufacturer());
+				managedDisc.setDiscModel(disc.getDiscModel());
+				managedDisc.setMaxWeight(disc.getMaxWeight());
+				managedDisc.setDiameterCM(disc.getDiameterCM());
+				managedDisc.setHeightCM(disc.getHeightCM());
+				managedDisc.setRimDepthCM(disc.getRimDepthCM());
+				managedDisc.setInsideRimDiameterCM(disc.getInsideRimDiameterCM());
+				managedDisc.setRimThicknessCM(disc.getRimThicknessCM());
+				managedDisc.setRimDepthRatio(disc.getRimDepthRatio());
+				managedDisc.setRimConfiguration(disc.getRimConfiguration());
+				managedDisc.setCertificationNumber(disc.getCertificationNumber());
+				managedDisc.setApprovedDate(disc.getApprovedDate());
+				managedDisc.setFlexibilityKG(disc.getFlexibilityKG());
+				managedDisc.setDiscClass(disc.getDiscClass());
+				managedDisc.setMaxDiscWeightGR(disc.getMaxDiscWeightGR());;
+//				managedDisc.set
 				em.flush();
 			} catch (Exception e) {
 				em.flush();
@@ -86,8 +102,8 @@ public class DiscDAOImpl implements DiscDAO {
 		} else {
 			em.flush();
 		}
-		// TODO Auto-generated method stub
-		return updatedDisc;
+		System.out.println(disc);// TODO Auto-generated method stub
+		return managedDisc;
 	}
 
 	@Override
