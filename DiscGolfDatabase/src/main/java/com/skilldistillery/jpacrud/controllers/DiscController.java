@@ -89,6 +89,7 @@ public class DiscController {
 	@RequestMapping(path="/updatedInformation", method=RequestMethod.POST)
 	public ModelAndView updatedDiscInfo(@ModelAttribute("disc") Disc disc, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
+		System.out.println(disc);
 		disc = dao.updateDisc(disc);
 		int discId = disc.getId();
 		mv.setViewName("redirect:singleId.do?discId="+discId);

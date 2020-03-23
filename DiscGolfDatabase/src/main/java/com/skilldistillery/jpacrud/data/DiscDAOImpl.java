@@ -75,7 +75,7 @@ public class DiscDAOImpl implements DiscDAO {
 	public Disc updateDisc(Disc disc) {
 		Disc managedDisc = em.find(Disc.class, disc.getId());;
 		System.out.println(disc);
-		if (em.contains(disc)) {
+		if (managedDisc != null) {
 			try {
 				managedDisc.setManufacturer(disc.getManufacturer());
 				managedDisc.setDiscModel(disc.getDiscModel());
