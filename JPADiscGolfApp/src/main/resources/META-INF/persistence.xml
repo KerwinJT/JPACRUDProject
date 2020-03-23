@@ -14,7 +14,7 @@
 	<!-- End Entities -->
 
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/discgolfdisc?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=MST" />
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/discdb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=MST" />
       <property name="javax.persistence.jdbc.user" value="discuser"/>
       <property name="javax.persistence.jdbc.password" value="discuser" />
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />

@@ -29,4 +29,74 @@ public class DiscDAOImpl implements DiscDAO {
 		return em.createQuery(findAllQuery, Disc.class).getResultList();
 	}
 
+	@Override
+	public List<String> allManufacturers() {
+		String queryManufacturer = "SELECT DISTINCT d.manufacturer from Disc d";
+		// TODO Auto-generated method stub
+		return em.createQuery(queryManufacturer, String.class).getResultList();
+	}
+
+	@Override
+	public List<Disc> discsByManufacturer(String manu) {
+		String queryGroupManu = "SELECT d FROM Disc d WHERE d.manufacturer LIKE :manu";
+		// TODO Auto-generated method stub
+		return em.createQuery(queryGroupManu, Disc.class).setParameter("manu", manu).getResultList();
+	}
+
+	@Override
+	public List<Disc> discsByKeyword(String keyword) {
+		String keywordDiscSearch = "SELECT d FROM Disc d where d.manufacturer like :keyword or d.discModel like :keyword";
+
+		// TODO Auto-generated method stub
+		return em.createQuery(keywordDiscSearch, Disc.class).setParameter("keyword", keyword).getResultList();
+	}
+
+	@Override
+	public boolean destroyDisc(int id) {
+		String discId = "SELECT d from Disc d where d.id = :id";
+		Disc toDelete = em.createQuery(discId, Disc.class).setParameter("id", id).getSingleResult();
+		if (em.contains(toDelete)) {
+			try {
+				em.remove(toDelete);
+				em.flush();
+			} catch (Exception e) {
+				em.flush();
+				e.printStackTrace();
+			}
+			return true;
+		} else {
+			em.flush();
+			return false;
+		}
+
+	}
+
+	@Override
+	public Disc updateDisc(Disc disc) {
+		Disc updatedDisc = null;
+		if (em.contains(disc)) {
+			try {
+				updatedDisc = em.find(Disc.class, disc.getId());
+				em.flush();
+			} catch (Exception e) {
+				em.flush();
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			em.flush();
+		}
+		// TODO Auto-generated method stub
+		return updatedDisc;
+	}
+
+	@Override
+	public Disc createDisc(Disc disc) {
+		Disc newDisc = disc;
+		em.persist(newDisc);
+		em.flush();
+		// TODO Auto-generated method stub
+		return newDisc;
+	}
+
 }
